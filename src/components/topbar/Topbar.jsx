@@ -1,18 +1,19 @@
 import React from "react"
 import "./topbar.css"
+import { Link } from "react-router-dom"
 
 export default function Topbar() {
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
-                <span className="logo">NewSocial</span>
+                <Link to='/home'><span className="logo">NewSocial</span></Link>
             </div>
             <div className="topbarRight">
                 <div className="topbarLinks">
-                    <span className="topbarLink">Home Page</span>
-                    <span className="topbarLink">Timeline</span>
+                    <Link to='/home'><span className="topbarLink">Home</span></Link>
+                    <Link to='/settings'><span className="topbarLink">Settings</span></Link>
                 </div>
-                <img src="/assets/persons/1.jpg" alt="" className="topbarImg" />
+                <Link to="/profile"><img src="/assets/persons/1.jpg" alt="" className="topbarImg" /></Link>
             </div>
         </div>
     )
