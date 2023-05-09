@@ -1,8 +1,31 @@
 import React from 'react'
 import "./login.css"
-import { Link } from 'react-router-dom'
+import {useState} from 'react'
+import axios from 'axios';
+import {Link, useNavigate} from "react-router-dom"
 
 export default function Login() {
+  const [email , setEmail] = useState('');
+  const [password , setPassword] = useState('');
+  const navigate = useNavigate();
+
+
+  
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    console.log("Form submitted!");
+    try {
+      const response = await axios.post("http://192.168.35.117:80/api/login", { email, password });
+      console.log(response.data);
+      setEmail("");
+      setPassword("");
+      navigate("/");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
   return (
     <div className='login'>
       <div className="loginWrapper">
@@ -13,15 +36,16 @@ export default function Login() {
             </span>
         </div>
         <div className="loginRight">
-            <div className="loginBox">
-                <input placeholder='Email' className="loginInput" />
-                <input placeholder='Password' className="loginInput" />
-                <button className="loginButton">Log In</button>
+            <form className="loginBox" onSubmit={handleRegister}>
+           
+                <input placeholder='Email' className="loginInput" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                <input placeholder='Password' className="loginInput"value={password} onChange={(e)=>setPassword(e.target.value)} />
+                <button className="loginButton" type='submit'>Log In</button>
                 <span className="loginForgot">Forgot Password?</span>
                 <Link to="/register" className='loginRgisterButton' ><button className='btnsignup'>
                     Create a new Account
                 </button></Link>
-            </div>
+            </form>
         </div>
       </div>
     </div>

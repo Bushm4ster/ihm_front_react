@@ -1,7 +1,36 @@
 import React from 'react'
 import "./register.css"
+import {useState} from 'react'
+import axios from 'axios';
+import {Link, useNavigate} from "react-router-dom"
 
 export default function Register() {
+  const [prenom , setprenom] = useState('');
+  const [nom , setnom] = useState('');
+  const [email , setEmail] = useState('');
+  const [password , setPassword] = useState('');
+  const navigate = useNavigate();
+
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    console.log("Form submitted!");
+    try {
+      const response = await axios.post("http://192.168.35.117:80/api/signup", { nom, prenom, email, password });
+      console.log(response.data);
+      setnom("");
+      setprenom("");
+      setEmail("");
+      setPassword("");
+      navigate("/login");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+
+
   return (
     <div className='login'>
       <div className="loginWrapper">
@@ -11,17 +40,18 @@ export default function Register() {
                 Connect with friends and the world around you on NewSocial
             </span>
         </div>
-        <div className="loginRight">
-            <div className="loginBox">
-                <input placeholder='Username' className="loginInput" />
-                <input placeholder='Email' className="loginInput" />
-                <input placeholder='Password' className="loginInput" />
+        <div className="loginRight"  >
+            <form className="loginBox" onSubmit={handleRegister} >
+            <input placeholder='First Name' className="loginInput" value={nom} onChange={(e)=>setnom(e.target.value)}/>
+                <input placeholder='Last Name' className="loginInput" value={prenom} onChange={(e)=>setprenom(e.target.value)}/>
+                <input placeholder='Email' className="loginInput" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <input placeholder='Password' className="loginInput" value={password} onChange={(e)=>setPassword(e.target.value)} />
                 <input placeholder='Password Again' className="loginInput" />
-                <button className="loginButton">Sign up</button>
+                <button type='submit' className="loginButton">Sign up</button>
                 <button className='loginRgisterButton'>
                     Log into account
                 </button>
-            </div>
+            </form>
         </div>
       </div>
     </div>
