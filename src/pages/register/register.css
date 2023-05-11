@@ -58,6 +58,13 @@
     border-radius: 10px;
     border: none;
     background-color: #1775ee;
+    display: flex;
+    justify-content: center;
+}
+
+.btnlogin {
+    background: none;
+    border: none;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -70,15 +77,19 @@
 }
 
 .loginRgisterButton {
-    width: 60%;
+    width: 100%;
     align-self: center;
     height: 50px;
     border-radius: 10px;
-    border: none;
+
     background-color: #42b72a;
+
+}
+.btnsignin{
     color: white;
+    border: none;
+    background: none;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
 }
-

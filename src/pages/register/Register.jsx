@@ -28,9 +28,6 @@ export default function Register() {
     }
   };
 
-
-
-
   return (
     <div className='login'>
       <div className="loginWrapper">
@@ -47,10 +44,10 @@ export default function Register() {
                 <input placeholder='Email' className="loginInput" value={email} onChange={(e)=>setEmail(e.target.value)} />
                 <input placeholder='Password' className="loginInput" value={password} onChange={(e)=>setPassword(e.target.value)} />
                 <input placeholder='Password Again' className="loginInput" />
-                <button type='submit' className="loginButton">Sign up</button>
-                <button className='loginRgisterButton'>
+                <div className="loginButton"><button type='submit' className='btnlogin'>Sign up</button></div>
+                <Link to='/login' className='loginRgisterButton'><button className='btnsignin'>
                     Log into account
-                </button>
+                </button></Link>
             </form>
         </div>
       </div>
