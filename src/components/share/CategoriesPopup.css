@@ -1,0 +1,99 @@
+.categoriesPopupContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.categoriesPopupBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.categoriesPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.categoriesPopupContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoriesPopup label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.categoriesPopupActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.categoriesPopupActions button {
+  margin-left: 10px;
+}
+
+.categoriesPopup h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.categoriesPopup label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.categoriesPopup input[type="radio"] {
+  margin-right: 10px;
+}
+
+.categoriesPopup input[type="radio"]:checked + span::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #1877f2;
+  margin-right: 5px;
+}
+
+.categoriesPopup input[type="radio"] + span::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.categoriesPopup button {
+  border: none;
+  background-color: #1877f2;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.categoriesPopup button:hover {
+  background-color: #1559ac;
+}
