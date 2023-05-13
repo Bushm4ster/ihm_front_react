@@ -3,6 +3,7 @@
     height: calc(100vh - 50px);
     overflow-y: scroll;
     position: sticky;
+    min-width: 15%;
     top: 50px;
 }
 

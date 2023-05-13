@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import "./share.css";
 import { PermMedia, Label } from "@mui/icons-material";
-import CategoriesPopup from "./CategoryPopoup";
 
 export default function Share() {
+
+  // Image upload section start
   const [selectedImages, setSelectedImages] = useState([]);
   const fileInputRef = useRef();
 
@@ -20,9 +21,11 @@ export default function Share() {
           const canvas = document.createElement("canvas");
           const context = canvas.getContext("2d");
 
-          const scaleFactor = 400 / image.width;
-          const newWidth = image.width * scaleFactor;
-          const newHeight = image.height * scaleFactor;
+          const widthScaleFactor = 300 / image.width;
+          const heightScaleFactor = 300 / image.height;
+
+          const newWidth = image.width * widthScaleFactor;
+          const newHeight = image.height * heightScaleFactor;
 
           canvas.width = newWidth;
           canvas.height = newHeight;
@@ -52,74 +55,126 @@ export default function Share() {
   function handleRemoveImage(index) {
     setSelectedImages((prevImages) => prevImages.filter((_, i) => i !== index));
   }
+  // Image upload section end
+  // Category popup start
+  const [category, setCategory] = useState('');
 
-  const [showCategoriesPopup, setShowCategoriesPopup] = useState(false);
+  function handleCategorySelection(e) {
+    setCategory(e.value);
+  }
 
-  const handleCategoryClick = () => {
-    setShowCategoriesPopup(true);
-  };
+  function handlePopupClose() {
+    setOpenPopup(false);
+  }
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false);
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-  };
+  // Category popup end
 
   return (
-    <div className={`share ${selectedImages.length > 0 ? "expanded" : ""}`}>
-      <div className="shareWrapper">
-        <div className="shareTop">
-          <img className="shareProfileImg" src="assets/persons/1.jpg" alt="" />
-          <input
-            type="file"
-            onChange={handleImageSelect}
-            ref={fileInputRef}
-            style={{ display: "none" }}
-            multiple
-          />
-          <span onClick={handlePermMediaClick}>
-            <PermMedia htmlColor="tomato" className="shareIcon" />
-          </span>
-          <input
-            placeholder="What's in your mind Sophia?"
-            className="shareInput"
-          />
-        </div>
-        <hr className="shareHr" />
-        <div className="shareBottom">
-          <div className="shareOptions">
-            <div className="shareOption" onClick={handleCategoryClick}>
-              <Label htmlColor="blue" className="shareIcon" />
-              <span className="shareOptionText">
-                {selectedCategory ? selectedCategory : "Category"}
-              </span>
-            </div>
+    <div className="shareContainer">
+      <div className={`share ${selectedImages.length > 0 ? "expanded" : ""}`}>
+        <div className="shareWrapper">
+          <div className="shareTop">
+            <img className="shareProfileImg" src="assets/persons/1.jpg" alt="" />
+            <input
+              placeholder="What's in your mind Sophia?"
+              className="shareInput"
+            />
           </div>
-          <button className="shareButton">Share</button>
-        </div>
-        {showCategoriesPopup && (
-          <CategoriesPopup
-            onSelect={handleCategorySelect}
-            onClose={() => setShowCategoriesPopup(false)}
-          />
-        )}
-        {showCategoriesPopup && <div className="overlay"></div>}
-      </div>
-      {selectedImages.length > 0 && (
-        <div className="imageContainer">
-          {selectedImages.map((image, index) => (
-            <div className="imageWrapper" key={index}>
-              <img src={image} alt={`Selected image ${index + 1}`} />
-              <button
-                className="removeButton"
-                onClick={() => handleRemoveImage(index)}
-              >
-                X
-              </button>
+          <hr className="shareHr" />
+          <div className="shareBottom">
+            <div className="shareOptions">
+              <div className="shareOption" onClick={handlePermMediaClick}>
+                <input
+                  type="file"
+                  onChange={handleImageSelect}
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  multiple
+                />
+                <PermMedia htmlColor="tomato" className="shareIcon" />
+                <span className="shareOptionText">
+                  Upload Images
+                </span>
+              </div>
+              <div className="shareOption" onClick={() => setOpenPopup(true)}>
+                <Label htmlColor="blue" className="shareIcon" />
+                <span className="shareOptionText">
+                  {category || 'Category'}
+                </span>
+              </div>
             </div>
-          ))}
+            <button className="shareButton">Share</button>
+          </div>
         </div>
-      )}
+        {openPopup && <Popup onClose={handlePopupClose} />}
+        {selectedImages.length > 0 && (
+          <div className="imageContainer">
+            {selectedImages.map((image, index) => (
+              <div className="imageWrapper" key={index}>
+                <button
+                  className="removeButton"
+                  onClick={() => handleRemoveImage(index)}
+                >
+                  X
+                </button>
+                <img src={image} alt={`Selected ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
+
+  function Popup({ onClose }) {
+    const handleClose = (e) => {
+      handleCategorySelection(e.target);
+      onClose();
+    };
+    const popupStyle = {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0, 0, 0, 0.5)',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 999,
+    };
+
+    const contentStyle = {
+      background: '#fff',
+      padding: '2rem',
+      borderRadius: '5px',
+      boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
+      maxWidth: '400px',
+    };
+
+    return (
+      <div className="popup" style={popupStyle}>
+        <div className="popupContent" style={contentStyle}>
+          <button className="closeButton" onClick={handleClose}>X</button>
+          <h3>Select a category:</h3>
+          <button name="category" value="Sports" className="categoryBtn" onClick={handleClose}>
+            Sports
+          </button>
+          <button name="category" value="Life" className="categoryBtn" onClick={handleClose}>
+            Life
+          </button>
+          <button name="category" value="Politics" className="categoryBtn" onClick={handleClose} >
+            Politics
+          </button>
+          <button name="category" value="Relationships" className="categoryBtn" onClick={handleClose} >
+            Relationships
+          </button>
+        </div>
+      </div>
+    );
+  }
+
 }
