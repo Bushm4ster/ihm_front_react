@@ -1,9 +1,9 @@
 .post {
-    width: 100%;
+    margin: 20px auto;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 16px -8px rgba(0,0,0,0.68); 
-    box-shadow: 0px 0px 16px -8px rgba(0,0,0,0.68);
-    margin: 30px 0;
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    transition: height 0.3s ease;
 }
 
 .postWrapper {
@@ -12,8 +12,9 @@
 
 .postTop {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .postTopLeft {
@@ -21,38 +22,54 @@
     align-items: center;
 }
 
+.postTopLeft div {
+    display: flex;
+    flex-direction: column;
+}
+
 .postProfileImg {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .postUsername {
-    font-size: 15px;
-    font-weight: 500;
-    margin: 0 10px;
+    font-weight: 600;
 }
 
 .postDate {
     font-size: 12px;
+    color: gray;
+}
+
+.postTopRight {
+    cursor: pointer;
 }
 
 .postCenter {
-    margin: 20px 0;
+    margin-bottom: 10px;
+}
+
+.postText {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .postImg {
-    margin-top: 20px;
     width: 100%;
-    max-height: 500px;
+    height: 500px;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .postBottom {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
 }
 
 .postBottomLeft {
@@ -60,19 +77,30 @@
     align-items: center;
 }
 
-.likeIcon {
-    width: 24px;
-    height: 24px;
+.likebtn {
+    color: #0d6efd;
+    font-size: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.dislikebtn {
+    color: rgb(255, 68, 68);
+    font-size: 20px;
     margin-right: 5px;
     cursor: pointer;
 }
 
 .postLikeCounter {
-    font-size: 15px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.postBottomRight {
+    cursor: pointer;
 }
 
 .postCommenttext {
-    cursor: pointer;
-    border-bottom: 1px dashed gray;
-    font-size: 15px;
+    font-size: 14px;
+    color: gray;
 }
