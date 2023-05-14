@@ -1,89 +1,86 @@
-.login {
-    width: 100vw;
-    height: 100vh;
-    background-color: #f0f2f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.lContainer {
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 38px;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 100vh;
+  background-color: #f6f6f6;
 }
 
-.loginWrapper {
-    width: 70%;
-    height: 70%;
-    display: flex;
+.spanLink{
+  color: #1890ff;
+  background-color: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: color .3s;
 }
 
-.loginLeft,
-.loginRight {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+.footer {
+  color: rgb(206, 212, 217);
+  text-align: center;
+  font-size: 12px;
+  padding: 1rem;
+  user-select: none;
+  margin-top:-45px;
 }
 
-.loginLogo {
-    font-size: 50px;
-    font-weight: 800;
-    color: #1775ee;
-    margin-bottom: 10px;
+.App-title {
+  font-size: 1.5em;
 }
 
-.loginDesc {
-    font-size: 24px;
+.App-intro {
+  font-size: large;
 }
 
-.loginBox {
-    height: 300px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+.login-form {
+  width: 300px;
 }
 
-.loginInput {
-    height: 50px;
-    border-radius: 10px;
-    border: 1px solid gray;
-    font-size: 18px;
-    padding-left: 20px;
+.btnFormItem {
+  margin-bottom: 0px;
 }
 
-.loginInput:focus {
-    outline: none;
+.login-form-button {
+  width: 100%;
 }
 
-.loginButton {
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    background-color: #1775ee;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
+.hidden {
+  display: none;
 }
 
-.loginForgot {
-    text-align: center;
-    color: #1775ee;
+.lItem {
+  width:300px;
 }
 
-.loginRgisterButton {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
+.loginForm {
+  background-color: white;
+  padding: 20px 30px;
+  margin-top: -60px;
+  margin-left:-30px;
+  margin-right:-30px;
+  border-radius: 8px;
+  border: 1px solid #d8d8da;
 }
 
-.btnsignup {
-    align-self: center;
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    background-color: #42b72a;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
+.loginTitle{
+  margin-bottom: 20px;
+  text-align: center;
+  color: #1890ff;
+}
+
+.loginImage {
+  margin-bottom: 70px;
+}
+
+tbody {
+  font-size: 14px;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: rgb(206, 212, 217);;
 }

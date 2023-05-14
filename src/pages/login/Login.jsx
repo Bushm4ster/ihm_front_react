@@ -1,16 +1,17 @@
-import React from 'react'
-import "./login.css"
-import {useState} from 'react'
-import axios from 'axios';
-import {Link, useNavigate} from "react-router-dom"
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './login.css';
+import axios from "axios";
+import { Form, Input, Button, Checkbox } from "antd";
+import loginImg from './login.png'
 
 export default function Login() {
-  const [email , setEmail] = useState('');
-  const [password , setPassword] = useState('');
+  const FormItem = Form.Item;
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-
-  
   const handleRegister = async (event) => {
     event.preventDefault();
     console.log("Form submitted!");
@@ -25,29 +26,49 @@ export default function Login() {
     }
   };
 
-
   return (
-    <div className='login'>
-      <div className="loginWrapper">
-        <div className="loginLeft">
-            <h3 className="loginLogo">NewSocial</h3>
-            <span className="loginDesc">
-                Connect with friends and the world around you on NewSocial
-            </span>
-        </div>
-        <div className="loginRight">
-            <form className="loginBox" onSubmit={handleRegister}>
-           
-                <input placeholder='Email' className="loginInput" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                <input placeholder='Password' className="loginInput"value={password} onChange={(e)=>setPassword(e.target.value)} />
-                <button className="loginButton" type='submit'>Log In</button>
-                <span className="loginForgot">Forgot Password?</span>
-                <Link to="/register" className='loginRgisterButton' ><button className='btnsignup'>
-                    Create a new Account
-                </button></Link>
-            </form>
+    <div>
+      <div className="lContainer">
+        <div className="lItem">
+          <div className="loginImage">
+            <img src={loginImg} width="300" style={{ position: 'relative' }} alt="login" />
+          </div>
+          <div className="loginForm">
+            <h2 className='loginTitle'>Login</h2>
+            <Form className="login-form" onSubmit={handleRegister}>
+              <FormItem>
+                <Input
+                  placeholder="Username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormItem>
+              <FormItem>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <Checkbox style={{ marginTop: '5px' }}>Remember me</Checkbox>
+              </FormItem>
+              <FormItem className='btnFormItem'>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  Log in
+                </Button>
+              </FormItem>
+              <FormItem>
+                <span>Don't have an account? </span>
+                <Link to="/register">Register now!</Link>
+              </FormItem>
+            </Form>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
