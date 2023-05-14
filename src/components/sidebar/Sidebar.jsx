@@ -1,19 +1,33 @@
-import React from 'react'
-import './sidebar.css'
+import React from "react";
+import "./sidebar.css";
 
 export default function Sidebar() {
-    return(
-        <div className='sidebar'>
-            <div className="sidebarWrapper">
-                <h3>Category</h3>
-                <input  type="checkbox" />sports<br/>
-                <input  type="checkbox" />Life<br/>
-                <input type="checkbox" />Politics<br/>
-                <input type="checkbox" />Relationship<br/>
-                <button className='sidebarButton'>Logout</button>
-                <hr className='sidebarHr'/>
-            </div>
+  return (
+    <div className="left">
+      <a href="" className="profile">
+        <div className="profile-photo">
+          <img src="assets/persons/2.jpg" alt="" />
         </div>
-    )
-}
+        <div className="handle">
+          <h4>Youssef Labidi</h4>
+          <p className="text-muted">@yousseflabidi</p>
+        </div>
+      </a>
 
+      <div className="sidebar">
+        <div className="sidebar-list">
+          <h2 className="categories">Categories</h2>
+
+          <h5 className="all">All</h5>
+          <h5 className="menu">Music</h5>
+          <h5 className="menu">Sports</h5>
+          <h5 className="menu">Politics</h5>
+          <button class="button-17" role="button">
+            Logout
+          </button>
+          <span className="span">@NewSocial All right reserved</span>
+        </div>
+      </div>
+    </div>
+  );
+}
