@@ -13,19 +13,22 @@ export default function Sidebar() {
           <p className="text-muted">@yousseflabidi</p>
         </div>
       </a>
-
       <div className="sidebar">
         <div className="sidebar-list">
-          <h2 className="categories">Categories</h2>
-
-          <h5 className="all">All</h5>
-          <h5 className="menu">Music</h5>
-          <h5 className="menu">Sports</h5>
-          <h5 className="menu">Politics</h5>
-          <button class="button-17" role="button">
-            Logout
-          </button>
-          <span className="span">@NewSocial All right reserved</span>
+          <div className="categories">
+            <h2 className="categoriesTitle">Categories</h2>
+            <div className="cateogriesList">
+              <h4 className="all"><input type="checkbox" name="all" id="all" /> All</h4>
+              <h4 className="menu"><input type="checkbox" name="music" id="music" /> Music</h4>
+              <h4 className="menu"><input type="checkbox" name="sports" id="sports" /> Sports</h4>
+              <h4 className="menu"><input type="checkbox" name="politics" id="politics" /> Politics</h4>
+            </div>
+          </div>
+          <div>
+            <button className="button-17" role="button">
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </div>

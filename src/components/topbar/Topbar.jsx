@@ -20,7 +20,7 @@ export default function Topbar() {
           <div className="profile-photo">
             <img src="assets/persons/2.jpg" alt="" />
           </div>
-          <label className="btn btn-primary" for="create-post">
+          <label className="btn btn-primary" htmlFor="create-post">
             Settings
           </label>
         </div>
