@@ -33,6 +33,7 @@ export default function Post({ post }) {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
   const [commentInput, setCommentInput] = useState("");
+  const [commentDropdownIndex, setCommentDropdownIndex] = useState(-1);
 
   const handleCommentInputChange = (e) => {
     setCommentInput(e.target.value);
@@ -44,15 +45,31 @@ export default function Post({ post }) {
       setCommentInput("");
     }
   };
+
+  const handleCommentDropdownClick = (commentIndex) => {
+    if (commentDropdownIndex === commentIndex){
+      commentIndex = -1;
+    }
+    function wrapper() {
+      setCommentDropdownIndex(commentIndex);
+    }
+    return wrapper;
+  };
+
+  const onCommentDelete = (index) => {
+    const newComments = [...comments];
+    newComments.splice(index, 1);
+    setComments(newComments);
+  };
   // comments section end
   // dropdown section start
-  // const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  // const handleDropdownClick = () => {
-  //   setShowDropdown(!showDropdown);
-  // };
+  const handleDropdownClick = () => {
+    setShowDropdown(!showDropdown);
+  };
   // dropdown section end
-  
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -73,12 +90,12 @@ export default function Post({ post }) {
           <div className="postTopRight">
             <div className="dropdown" onClick={handleDropdownClick}>
               <MoreVert />
-              {/* {showDropdown && (
+              {showDropdown && (
                 <div className="dropdownContent">
-                  <a onClick={handleDelete} ><i className="fas fa-trash"></i> Delete</a>
+                  <a><i className="fas fa-trash"></i> Delete</a>
                   <a href="#"><i className="far fa-flag"></i> Report</a>
                 </div>
-              )} */}
+              )}
             </div>
           </div>
         </div>
@@ -102,7 +119,7 @@ export default function Post({ post }) {
               }
               onClick={likeHandler("disliked")}
             ></i>
-            <span className="postLikeCounter">{like} people like it</span>
+            <span className="postLikeCounter">{like}</span>
           </div>
           <div
             className="postBottomRight"
@@ -141,16 +158,29 @@ export default function Post({ post }) {
               <div className="postCommentsList">
                 {comments.map((comment, index) => (
                   <div className="postComment" key={index}>
-                    <div className="postTopLeft">
-                      <img
-                        className="postProfileImg"
-                        src={
-                          Users.filter((u) => u.id === post.userId)[0]
-                            .profilePicture
-                        }
-                        alt=""
-                      />
-                      {Users.filter((u) => u.id === post.userId)[0].username}
+                    <div className="postTop">
+                      <div className="postTopLeft">
+                        <img
+                          className="postProfileImg"
+                          src={
+                            Users.filter((u) => u.id === post.userId)[0]
+                              .profilePicture
+                          }
+                          alt=""
+                        />
+                        {Users.filter((u) => u.id === post.userId)[0].username}
+                      </div>
+                      <div className="postTopRight">
+                        <div className="dropdown" onClick={handleCommentDropdownClick(index)}>
+                          <MoreVert />
+                          {commentDropdownIndex === index && (
+                            <div className="dropdownContent">
+                              <a onClick={() => onCommentDelete(index)}><i className="fas fa-trash"></i> Delete</a>
+                              <a href="#"><i className="far fa-flag"></i> Report</a>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                     <span className="postCommentText">{comment}</span>
                   </div>
