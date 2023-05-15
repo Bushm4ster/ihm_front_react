@@ -16,7 +16,7 @@ export default function Login() {
     event.preventDefault();
     console.log("Form submitted!");
     try {
-      const response = await axios.post("http://192.168.35.117:80/api/login", { email, password });
+      const response = await axios.post("http://192.168.35.117:8000/api/login", { email, password });
       console.log(response.data);
       setEmail("");
       setPassword("");
@@ -35,7 +35,7 @@ export default function Login() {
           </div>
           <div className="loginForm">
             <h2 className='loginTitle'>Login</h2>
-            <Form className="login-form" onSubmit={handleRegister}>
+            <form className="login-form" onSubmit={handleRegister}>
               <FormItem>
                 <Input
                   placeholder="Username"
@@ -65,7 +65,7 @@ export default function Login() {
                 <span>Don't have an account? </span>
                 <Link to="/register">Register now!</Link>
               </FormItem>
-            </Form>
+            </form>
           </div>
         </div>
       </div>

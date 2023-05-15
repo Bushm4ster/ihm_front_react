@@ -5,6 +5,7 @@ import Login from "./pages/login/Login.jsx";
 import Register from "./pages/register/Register.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Settings from "./pages/settings/Settings.jsx";
+import PrivateRoute from "./components/PrivateRouter.jsx";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route exact path='/profile' element={<PrivateRoute />}>
+            <Route exact path='/profile' element={<Profile />} />
+          </Route>
           <Route path="/settings" element={<Settings />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -21,5 +24,4 @@ function App() {
     </BrowserRouter>
   )
 }
-
 export default App;

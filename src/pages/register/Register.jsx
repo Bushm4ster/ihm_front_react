@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./register.css"
-import {useState} from 'react'
 import axios from 'axios';
 import {Link, useNavigate} from "react-router-dom"
+import { Form, Input, Button, Checkbox } from "antd";
+import loginImg from './login.png'
+
 
 export default function Register() {
+  const FormItem = Form.Item;
+
   const [prenom , setprenom] = useState('');
   const [nom , setnom] = useState('');
   const [email , setEmail] = useState('');
@@ -16,7 +20,7 @@ export default function Register() {
     event.preventDefault();
     console.log("Form submitted!");
     try {
-      const response = await axios.post("http://192.168.35.117:80/api/signup", { nom, prenom, email, password });
+      const response = await axios.post("http://192.168.35.117:8000/api/signup", { nom, prenom, email, password });
       console.log(response.data);
       setnom("");
       setprenom("");
@@ -29,26 +33,66 @@ export default function Register() {
   };
 
   return (
-    <div className='login'>
-      <div className="loginWrapper">
-        <div className="loginLeft">
-            <h3 className="loginLogo">NewSocial</h3>
-            <span className="loginDesc">
-                Connect with friends and the world around you on NewSocial
-            </span>
-        </div>
-        <div className="loginRight"  >
-            <form className="loginBox" onSubmit={handleRegister} >
-            <input placeholder='First Name' className="loginInput" value={nom} onChange={(e)=>setnom(e.target.value)}/>
-                <input placeholder='Last Name' className="loginInput" value={prenom} onChange={(e)=>setprenom(e.target.value)}/>
-                <input placeholder='Email' className="loginInput" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                <input placeholder='Password' className="loginInput" value={password} onChange={(e)=>setPassword(e.target.value)} />
-                <input placeholder='Password Again' className="loginInput" />
-                <div className="loginButton"><button type='submit' className='btnlogin'>Sign up</button></div>
-                <Link to='/login' className='loginRgisterButton'><button className='btnsignin'>
-                    Log into account
-                </button></Link>
+    <div>
+      <div className="lContainer">
+        <div className="lItem">
+          <div className="loginImage">
+            <img src={loginImg} width="300" style={{ position: 'relative' }} alt="login" />
+          </div>
+          <div className="loginForm">
+            <h2 className='loginTitle'>Register</h2>
+            <form className="login-form" onSubmit={handleRegister}>
+              <FormItem>
+                <Input
+                  placeholder="First Name"
+                  value={nom}
+                  onChange={(e) => setnom(e.target.value)}
+                />
+              </FormItem>
+              <FormItem>
+                <Input
+                  placeholder="Last Name"
+                  value={prenom}
+                  onChange={(e) => setprenom(e.target.value)}
+                />
+              </FormItem>
+              <FormItem>
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormItem>
+              <FormItem>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </FormItem>
+              {/* <FormItem>
+                <Input
+                  type="password"
+                  placeholder="ReType Password"
+                />
+              </FormItem> */}
+              <FormItem className='btnFormItem'>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  Sign Up
+                </Button>
+              </FormItem>
+              <FormItem>
+                <span>Already have an account? </span>
+                <Link to="/login">Login now!</Link>
+              </FormItem>
             </form>
+          </div>
         </div>
       </div>
     </div>
