@@ -1,33 +1,11 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './login.css';
-import axios from "axios";
 import { Form, Input, Button, Checkbox } from "antd";
 import loginImg from './login.png'
 
 export default function Login() {
   const FormItem = Form.Item;
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    console.log("Form submitted!");
-    try {
-      const response = await axios.post("http://192.168.35.117:8000/api/login", { email, password });
-      console.log(response.data);
-
-      localStorage.setItem('token', response.data.token);
-
-      setEmail("");
-      setPassword("");
-      navigate("/settings");
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   return (
     <div className='logincontainer'>
@@ -38,20 +16,16 @@ export default function Login() {
           </div>
           <div className="loginForm">
             <h2 className='loginTitle'>Login</h2>
-            <form className="login-form" onSubmit={handleLogin}>
+            <form className="login-form">
               <FormItem>
                 <Input
                   placeholder="Username"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormItem>
               <FormItem>
                 <Input
                   type="password"
                   placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <Checkbox style={{ marginTop: '5px' }}>Remember me</Checkbox>
               </FormItem>
