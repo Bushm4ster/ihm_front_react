@@ -43,61 +43,138 @@ export default function Sidebar() {
 
   return (
     <div className="left">
-      <a href="" className="sidebar-profile">
-        <div className="profile-photo">
+      <div className="sidebar-profile">
+        <div className="sidebar-photo">
           <img src="assets/persons/2.jpg" alt="" />
         </div>
         <div className="handle">
-          <h4>Youssef Labidi</h4>
+          <p>Haytham Gharam</p>
         </div>
-      </a>
+      </div>
       <div className="sidebar">
         <div className="sidebar-list">
-          <div className="categories">
-            <h2 className="categoriesTitle">Categories</h2>
-            <div className="cateogriesList">
-              <h4 className="all">
-                <input
-                  type="checkbox"
-                  name="all"
-                  id="all"
-                  checked={allChecked}
-                  onChange={handleAllChecked}
-                />
-                All
-              </h4>
-              <h4 className="menu">
-                <input
-                  type="checkbox"
-                  name="music"
-                  id="music"
-                  checked={musicChecked}
-                  onChange={handleMusicChecked}
-                />
-                Music
-              </h4>
-              <h4 className="menu">
-                <input
-                  type="checkbox"
-                  name="sports"
-                  id="sports"
-                  checked={sportsChecked}
-                  onChange={handleSportsChecked}
-                />
-                Sports
-              </h4>
-              <h4 className="menu">
-                <input
-                  type="checkbox"
-                  name="politics"
-                  id="politics"
-                  checked={politicsChecked}
-                  onChange={handlePoliticsChecked}
-                />
-                Politics
-              </h4>
-            </div>
-          </div>
+          <table>
+            <tr>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-left">
+                      <i className="fas fa-home"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-right">
+                      <p>Home</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-left">
+                      <i className="fas fa-bell"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-right">
+                      <p>Notifications</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-left">
+                      <i className="fas fa-envelope"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-right">
+                      <p>Messages</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-left">
+                      <i className="fas fa-bookmark"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-right">
+                      <p>Bookmarks</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-left">
+                      <i className="fas fa-list"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-right">
+                      <p>Categories</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-left">
+                      <i className="fas fa-user"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="sidebar-list-item">
+                  <div className="sidebar-list-item-content">
+                    <div className="sidebar-list-item-content-right">
+                      <p>Profile</p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
           <div>
             <button className="button-17" role="button">
               Logout
