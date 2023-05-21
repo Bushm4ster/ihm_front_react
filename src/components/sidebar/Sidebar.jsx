@@ -1,5 +1,6 @@
-import React, { useState, useHistory } from "react";
+import React, { useState } from "react";
 import "./sidebar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const [allChecked, setAllChecked] = useState(false);
@@ -39,6 +40,15 @@ export default function Sidebar() {
     } else if (musicChecked && sportsChecked) {
       setAllChecked(true);
     }
+  };
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    // Perform any necessary cleanup before logging out
+    localStorage.removeItem('token');
+
+    // Redirect the user to the login page
+    navigate("/login");
   };
 
   return (
@@ -99,7 +109,7 @@ export default function Sidebar() {
             </div>
           </div>
           <div>
-            <button className="button-17" role="button">
+            <button className="button-17" role="button" onClick={handleLogout}>
               Logout
             </button>
           </div>

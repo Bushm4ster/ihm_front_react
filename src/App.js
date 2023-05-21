@@ -13,8 +13,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route exact path='/profile' element={<PrivateRoute />}>
-            <Route exact path='/profile' element={<Profile />} />
+          <Route exact path='/profile' element={<PrivateRoute/>}>
+            <Route exact path='/profile' element={<Profile/>}/>
           </Route>
           <Route path="/settings" element={<Settings />} />
           <Route path="/login" element={<Login />} />

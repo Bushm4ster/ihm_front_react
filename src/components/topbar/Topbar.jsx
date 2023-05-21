@@ -6,23 +6,20 @@ export default function Topbar() {
   return (
     <nav>
       <div className="container">
-        <h2 className="log">NewSocial</h2>
-        <div className="search-bar">
-          <i className="uil uil-search"></i>
-          <input type="search" placeholder="Search for categories" />
-        </div>
+        <Link to="/" className="logo">
+          <h2 className="log">NewSocial</h2>
+        </Link>
 
         <div className="create">
           <img src="assets/home.png" alt="" />
           <img src="assets/notif.png" alt="" />
-          <img src="assets/chat.png" alt="" />
-
-          <div className="profile-photo">
-            <img src="assets/persons/2.jpg" alt="" />
-          </div>
-          <label className="btn btn-primary" htmlFor="create-post">
-            Settings
-          </label>
+          <Link to="/settings"><img src="assets/setting.png" alt="" style={{width: '30px'}}/>
+          </Link>
+          <Link to="/profile">
+            <label className="btn btn-primary">
+              Profile
+            </label>
+          </Link>
         </div>
       </div>
     </nav>

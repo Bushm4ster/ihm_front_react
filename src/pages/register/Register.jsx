@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import "./register.css"
 import axios from 'axios';
 import {Link, useNavigate} from "react-router-dom"
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 import loginImg from './login.png'
 
 

@@ -12,22 +12,25 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = async (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     console.log("Form submitted!");
     try {
       const response = await axios.post("http://192.168.35.117:8000/api/login", { email, password });
       console.log(response.data);
+
+      localStorage.setItem('token', response.data.token);
+
       setEmail("");
       setPassword("");
-      navigate("/");
+      navigate("/settings");
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <div>
+    <div className='logincontainer'>
       <div className="lContainer">
         <div className="lItem">
           <div className="loginImage">
@@ -35,7 +38,7 @@ export default function Login() {
           </div>
           <div className="loginForm">
             <h2 className='loginTitle'>Login</h2>
-            <form className="login-form" onSubmit={handleRegister}>
+            <form className="login-form" onSubmit={handleLogin}>
               <FormItem>
                 <Input
                   placeholder="Username"
